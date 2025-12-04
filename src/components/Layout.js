@@ -20,51 +20,41 @@ export default function Layout({ children }) {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50">
+    <div className="min-h-screen flex flex-col bg-white">
       {/* Navigation */}
-      <nav className="bg-white shadow-card sticky top-0 z-50">
-        <div className="container-custom">
-          <div className="flex justify-between items-center h-20">
+      <nav className="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="flex justify-between items-center h-16">
             {/* Logo */}
-            <Link href="/" className="flex items-center space-x-2 group">
-              <div className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center group-hover:shadow-lg transition-all">
-                <span className="text-white font-bold text-lg">L</span>
-              </div>
-              <span className="text-2xl font-bold text-gradient hidden sm:block">LocalServices</span>
+            <Link href="/" className="font-bold text-xl text-blue-600 hover:text-blue-700 transition-colors">
+              LocalServices
             </Link>
 
             {/* Desktop Menu */}
-            <div className="hidden md:flex items-center space-x-8">
-              <Link href="/blog" className="text-gray-700 hover:text-primary-600 font-medium transition-colors">
+            <div className="hidden md:flex items-center space-x-6">
+              <Link href="/blog" className="text-gray-700 hover:text-blue-600 transition-colors font-medium">
                 Blog
               </Link>
 
               {user ? (
                 <div className="flex items-center space-x-4">
-                  <div className="flex items-center space-x-3 px-4 py-2 bg-primary-50 rounded-lg">
-                    <div className="w-8 h-8 bg-primary-600 rounded-full flex items-center justify-center text-white text-sm font-bold">
-                      {(user.full_name || user.name || 'U')[0].toUpperCase()}
-                    </div>
-                    <span className="text-gray-700 font-medium">
-                      {user.full_name || user.name}
-                    </span>
-                  </div>
+                  <span className="text-gray-800 font-medium">{user.full_name || user.name}</span>
                   <button
                     onClick={handleLogout}
-                    className="btn-secondary text-sm"
+                    className="btn-secondary btn-sm"
                   >
                     Logout
                   </button>
                 </div>
               ) : (
                 <div className="flex items-center space-x-3">
-                  <Link href="/auth/login" className="text-gray-700 hover:text-primary-600 font-medium transition-colors">
+                  <Link href="/auth/login" className="text-gray-700 hover:text-blue-600 transition-colors font-medium">
                     Login
                   </Link>
-                  <Link href="/auth/register" className="btn-primary text-sm">
+                  <Link href="/auth/register" className="btn-primary btn-sm">
                     Sign Up
                   </Link>
-                  <Link href="/provider/register" className="btn-secondary text-sm">
+                  <Link href="/provider/register" className="btn-secondary btn-sm">
                     Provider
                   </Link>
                 </div>
@@ -76,7 +66,7 @@ export default function Layout({ children }) {
               className="md:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             </button>
@@ -84,32 +74,30 @@ export default function Layout({ children }) {
 
           {/* Mobile Menu */}
           {isMenuOpen && (
-            <div className="md:hidden pb-4 border-t border-gray-200">
-              <Link href="/blog" className="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded">
+            <div className="md:hidden pb-4 space-y-2">
+              <Link href="/blog" className="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg">
                 Blog
               </Link>
               {user ? (
                 <>
-                  <div className="px-4 py-2 text-gray-700 font-medium">
-                    Hi, {user.full_name || user.name}
-                  </div>
+                  <div className="px-4 py-2 text-gray-800 font-medium">{user.full_name || user.name}</div>
                   <button
                     onClick={handleLogout}
-                    className="w-full text-left px-4 py-2 text-red-600 hover:bg-red-50 rounded"
+                    className="w-full text-left px-4 py-2 text-red-600 hover:bg-red-50 rounded-lg"
                   >
                     Logout
                   </button>
                 </>
               ) : (
                 <>
-                  <Link href="/auth/login" className="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded">
+                  <Link href="/auth/login" className="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg">
                     Login
                   </Link>
-                  <Link href="/auth/register" className="block px-4 py-2 text-primary-600 font-medium hover:bg-gray-100 rounded">
+                  <Link href="/auth/register" className="block px-4 py-2 text-blue-600 font-medium hover:bg-blue-50 rounded-lg">
                     Sign Up
                   </Link>
-                  <Link href="/provider/register" className="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded">
-                    Register as Provider
+                  <Link href="/provider/register" className="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg">
+                    Provider
                   </Link>
                 </>
               )}
@@ -119,62 +107,54 @@ export default function Layout({ children }) {
       </nav>
 
       {/* Main Content */}
-      <main className="flex-grow">
+      <main className="flex-grow bg-white">
         {children}
       </main>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-gray-300 mt-20">
-        <div className="container-custom py-12">
+      <footer className="bg-gray-50 border-t border-gray-200 mt-16">
+        <div className="max-w-6xl mx-auto px-4 py-12">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
             {/* Brand */}
             <div>
-              <div className="flex items-center space-x-2 mb-4">
-                <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold">L</span>
-                </div>
-                <span className="text-xl font-bold text-white">LocalServices</span>
-              </div>
-              <p className="text-sm text-gray-400">
+              <h3 className="font-bold text-lg text-gray-800 mb-2">LocalServices</h3>
+              <p className="text-gray-600 text-sm">
                 Connect with trusted local service providers in your area.
               </p>
             </div>
 
             {/* Quick Links */}
             <div>
-              <h4 className="font-semibold text-white mb-4">Quick Links</h4>
+              <h4 className="font-semibold text-gray-800 mb-4 text-sm">Quick Links</h4>
               <ul className="space-y-2 text-sm">
-                <li><Link href="/" className="hover:text-white transition-colors">Home</Link></li>
-                <li><Link href="/blog" className="hover:text-white transition-colors">Blog</Link></li>
-                <li><Link href="/auth/login" className="hover:text-white transition-colors">Login</Link></li>
+                <li><Link href="/" className="text-gray-600 hover:text-blue-600 transition-colors">Home</Link></li>
+                <li><Link href="/blog" className="text-gray-600 hover:text-blue-600 transition-colors">Blog</Link></li>
               </ul>
             </div>
 
             {/* For Providers */}
             <div>
-              <h4 className="font-semibold text-white mb-4">For Providers</h4>
+              <h4 className="font-semibold text-gray-800 mb-4 text-sm">Providers</h4>
               <ul className="space-y-2 text-sm">
-                <li><Link href="/provider/register" className="hover:text-white transition-colors">Register</Link></li>
-                <li><a href="#" className="hover:text-white transition-colors">Grow Your Business</a></li>
+                <li><Link href="/provider/register" className="text-gray-600 hover:text-blue-600 transition-colors">Register</Link></li>
               </ul>
             </div>
 
             {/* Contact */}
             <div>
-              <h4 className="font-semibold text-white mb-4">Contact</h4>
+              <h4 className="font-semibold text-gray-800 mb-4 text-sm">Contact</h4>
               <ul className="space-y-2 text-sm">
-                <li><a href="mailto:support@localservices.com" className="hover:text-white transition-colors">support@localservices.com</a></li>
-                <li><a href="tel:+1234567890" className="hover:text-white transition-colors">+1 (234) 567-890</a></li>
+                <li><a href="mailto:support@localservices.com" className="text-gray-600 hover:text-blue-600 transition-colors">support@localservices.com</a></li>
               </ul>
             </div>
           </div>
 
-          <div className="border-t border-gray-800 pt-8">
-            <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
+          <div className="border-t border-gray-200 pt-8">
+            <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-600">
               <p>&copy; 2024 LocalServices. All rights reserved.</p>
               <div className="flex space-x-6 mt-4 md:mt-0">
-                <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-                <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+                <a href="#" className="hover:text-blue-600 transition-colors">Privacy Policy</a>
+                <a href="#" className="hover:text-blue-600 transition-colors">Terms of Service</a>
               </div>
             </div>
           </div>

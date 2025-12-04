@@ -29,30 +29,34 @@ export default function Blog() {
         <title>Blog - LocalServices</title>
       </Head>
 
-      <div className="container mx-auto px-4 py-12">
-        <h1 className="text-4xl font-bold mb-8 text-center">Our Blog</h1>
+      <div className="max-w-6xl mx-auto px-4 py-6">
+        <h1 className="text-4xl font-bold text-gray-800 mb-8 text-center">Blog</h1>
 
         {loading ? (
-          <div className="text-center">Loading...</div>
+          <div className="text-center py-12">
+            <p className="text-muted">Loading posts...</p>
+          </div>
         ) : posts.length === 0 ? (
-          <p className="text-center text-gray-600">No blog posts yet</p>
+          <p className="text-center text-muted py-12">No blog posts yet</p>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid-3">
             {posts.map((post) => (
               <Link key={post.id} href={`/blog/${post.slug}`}>
-                <div className="card hover:shadow-xl transition-shadow cursor-pointer">
+                <div className="card hover:shadow-md cursor-pointer">
                   <div className="mb-4">
-                    <span className="text-sm text-primary-600">{post.category}</span>
-                    <h2 className="text-2xl font-bold mt-2">{post.title}</h2>
+                    <span className="badge badge-blue text-xs">{post.category}</span>
+                    <h2 className="text-lg font-semibold text-gray-800 mt-3">{post.title}</h2>
                   </div>
                   
-                  <p className="text-gray-600 mb-4 line-clamp-3">
+                  <p className="text-gray-600 text-sm mb-4 line-clamp-2">
                     {post.content.substring(0, 150)}...
                   </p>
 
-                  <div className="flex justify-between items-center text-sm text-gray-500">
-                    <span>By {post.author_name}</span>
-                    <span>{new Date(post.created_at).toLocaleDateString()}</span>
+                  <div className="pt-4 border-t border-gray-200">
+                    <div className="flex justify-between items-center text-xs text-gray-500">
+                      <span>By {post.author_name}</span>
+                      <span>{new Date(post.created_at).toLocaleDateString()}</span>
+                    </div>
                   </div>
                 </div>
               </Link>

@@ -54,50 +54,78 @@ export default function Home() {
       </Head>
 
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-primary-600 to-primary-800 text-white py-20">
-        <div className="container mx-auto px-4">
+      <section className="section-hero bg-gradient-primary text-white">
+        <div className="container-custom">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+            <h1 className="text-5xl md:text-6xl font-bold mb-4 leading-tight">
               Find Trusted Local Service Providers
             </h1>
-            <p className="text-xl mb-8">
-              Connect with verified professionals in your area
+            <p className="text-xl text-primary-100 mb-12">
+              Connect with verified professionals for plumbing, carpentry, cleaning, and more
             </p>
             <SearchBar onSearch={handleSearch} />
           </div>
         </div>
-      </div>
+      </section>
 
       {/* Categories Section */}
-      <div className="container mx-auto px-4 py-16">
-        <h2 className="text-3xl font-bold text-center mb-8">Browse by Category</h2>
-        
-        {loading ? (
-          <div className="text-center">Loading...</div>
-        ) : (
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
-            {categories.map((category) => (
-              <button
-                key={category.id}
-                onClick={() => handleCategoryClick(category.slug)}
-                className="card hover:shadow-lg transition-shadow text-center cursor-pointer"
-              >
-                <div className="text-3xl mb-2">🔧</div>
-                <h3 className="font-semibold">{category.name}</h3>
-                <p className="text-sm text-gray-600">{category.providers_count || 0} providers</p>
-              </button>
-            ))}
+      <section className="section-padding">
+        <div className="container-custom">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-2">Browse by Category</h2>
+            <p className="text-gray-600 text-lg">Find the service you need</p>
           </div>
-        )}
-      </div>
-
-      {/* Featured Providers */}
-      <div className="bg-gray-50 py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-8">Top Rated Providers</h2>
           
           {loading ? (
-            <div className="text-center">Loading...</div>
+            <div className="text-center py-12">
+              <div className="spinner mx-auto mb-4"></div>
+              <p className="text-gray-600">Loading categories...</p>
+            </div>
+          ) : categories.length === 0 ? (
+            <div className="text-center py-12 text-gray-600">
+              No categories available
+            </div>
+          ) : (
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4">
+              {categories.map((category) => (
+                <button
+                  key={category.id}
+                  onClick={() => handleCategoryClick(category.slug)}
+                  className="card text-center hover:border-primary-200 group transition-all"
+                >
+                  <div className="text-4xl mb-3 group-hover:scale-110 transition-transform">
+                    {category.icon || '🔧'}
+                  </div>
+                  <h3 className="font-semibold text-gray-900 text-sm mb-1">
+                    {category.name}
+                  </h3>
+                  <p className="text-xs text-gray-500">
+                    {category.providers_count || 0} providers
+                  </p>
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Featured Providers Section */}
+      <section className="section-padding bg-gray-50">
+        <div className="container-custom">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-2">Top Rated Providers</h2>
+            <p className="text-gray-600 text-lg">Our most trusted and highly-reviewed professionals</p>
+          </div>
+          
+          {loading ? (
+            <div className="text-center py-12">
+              <div className="spinner mx-auto mb-4"></div>
+              <p className="text-gray-600">Loading providers...</p>
+            </div>
+          ) : featuredProviders.length === 0 ? (
+            <div className="text-center py-12 text-gray-600">
+              <p>No featured providers available at this time</p>
+            </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {featuredProviders.map((provider) => (
@@ -106,25 +134,18 @@ export default function Home() {
             </div>
           )}
         </div>
-      </div>
+      </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-800 text-white py-8">
-        <div className="container mx-auto px-4">
-          <div className="text-center">
-            <h3 className="text-xl font-bold mb-4">LocalServices</h3>
-            <p className="text-gray-400 mb-4">Connecting customers with trusted service providers</p>
-            <div className="flex justify-center space-x-6">
-              <a href="mailto:support@localservices.com" className="hover:text-primary-400">
-                Contact: support@localservices.com
-              </a>
-            </div>
-            <p className="text-gray-500 mt-4 text-sm">
-              © 2024 LocalServices. All rights reserved.
-            </p>
-          </div>
+      {/* CTA Section */}
+      <section className="section-padding bg-gradient-primary text-white">
+        <div className="container-custom text-center">
+          <h2 className="text-4xl font-bold mb-4">Ready to Become a Provider?</h2>
+          <p className="text-primary-100 text-lg mb-8">Grow your business by connecting with customers in your area</p>
+          <a href="/provider/register" className="btn-primary bg-white text-primary-600 hover:bg-gray-100">
+            Register as Provider
+          </a>
         </div>
-      </footer>
+      </section>
     </Layout>
   );
 }

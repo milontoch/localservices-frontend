@@ -31,8 +31,8 @@ export default function BlogPost() {
   if (loading) {
     return (
       <Layout>
-        <div className="container mx-auto px-4 py-8 text-center">
-          Loading...
+        <div className="max-w-6xl mx-auto px-4 py-6 text-center">
+          <p className="text-muted">Loading blog post...</p>
         </div>
       </Layout>
     );
@@ -41,8 +41,8 @@ export default function BlogPost() {
   if (!post) {
     return (
       <Layout>
-        <div className="container mx-auto px-4 py-8 text-center">
-          Post not found
+        <div className="max-w-6xl mx-auto px-4 py-6 text-center">
+          <p className="text-muted">Blog post not found</p>
         </div>
       </Layout>
     );
@@ -54,36 +54,45 @@ export default function BlogPost() {
         <title>{post.title} - LocalServices Blog</title>
       </Head>
 
-      <div className="container mx-auto px-4 py-12">
-        <article className="max-w-3xl mx-auto">
-          <div className="mb-8">
-            <span className="text-sm text-primary-600">{post.category}</span>
-            <h1 className="text-4xl font-bold mt-2 mb-4">{post.title}</h1>
-            
-            <div className="flex items-center text-gray-600 text-sm">
-              <span>By {post.author_name}</span>
-              <span className="mx-2">•</span>
+      <div className="max-w-4xl mx-auto px-4 py-6">
+        <article className="card">
+          {/* Header */}
+          <div className="mb-6 pb-6 border-b border-gray-200">
+            <div className="flex items-center gap-2 mb-3">
+              <span className="badge badge-blue">{post.category}</span>
+            </div>
+            <h1 className="text-4xl font-bold text-gray-800 mb-4">{post.title}</h1>
+            <div className="flex items-center gap-4 text-sm text-gray-600">
+              <span className="font-medium text-gray-800">{post.author_name}</span>
+              <span>•</span>
               <span>{new Date(post.created_at).toLocaleDateString()}</span>
             </div>
           </div>
 
+          {/* Featured Image */}
           {post.photo_url && (
-            <div className="relative w-full h-96 mb-8">
+            <div className="relative w-full h-80 mb-8 rounded-lg overflow-hidden border border-gray-200">
               <Image
                 src={post.photo_url}
                 alt={post.title}
                 fill
-                className="object-cover rounded-lg"
+                className="object-cover"
               />
             </div>
           )}
 
-          <div className="prose max-w-none">
+          {/* Content */}
+          <div className="prose prose-sm max-w-none">
             {post.content.split('\n').map((paragraph, index) => (
               <p key={index} className="mb-4 text-gray-700 leading-relaxed">
                 {paragraph}
               </p>
             ))}
+          </div>
+
+          {/* Footer */}
+          <div className="mt-8 pt-6 border-t border-gray-200">
+            <button className="btn-primary">Share Article</button>
           </div>
         </article>
       </div>

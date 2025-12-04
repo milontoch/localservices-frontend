@@ -140,25 +140,34 @@ export default function ProviderRegister() {
         <title>Register as Provider - LocalServices</title>
       </Head>
 
-      <div className="container mx-auto px-4 py-16">
+      <div className="max-w-6xl mx-auto px-4 py-6">
         <div className="max-w-2xl mx-auto card">
-          <h1 className="text-3xl font-bold mb-6 text-center">Become a Service Provider</h1>
+          <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">Become a Service Provider</h1>
 
           {/* Progress Steps */}
-          <div className="flex justify-between mb-8">
-            <div className={`flex-1 text-center ${step >= 1 ? 'text-primary-600 font-semibold' : 'text-gray-400'}`}>
-              1. Register
+          <div className="flex justify-between mb-8 pb-8 border-b border-gray-200">
+            <div className={`flex-1 text-center text-sm font-medium ${step >= 1 ? 'text-blue-600' : 'text-gray-400'}`}>
+              <div className={`inline-flex items-center justify-center w-8 h-8 rounded-full border-2 mb-2 ${step >= 1 ? 'bg-blue-600 border-blue-600 text-white' : 'border-gray-300'}`}>
+                {step > 1 ? '✓' : '1'}
+              </div>
+              <p>Register</p>
             </div>
-            <div className={`flex-1 text-center ${step >= 2 ? 'text-primary-600 font-semibold' : 'text-gray-400'}`}>
-              2. Verify Phone
+            <div className={`flex-1 text-center text-sm font-medium ${step >= 2 ? 'text-blue-600' : 'text-gray-400'}`}>
+              <div className={`inline-flex items-center justify-center w-8 h-8 rounded-full border-2 mb-2 ${step >= 2 ? 'bg-blue-600 border-blue-600 text-white' : 'border-gray-300'}`}>
+                {step > 2 ? '✓' : '2'}
+              </div>
+              <p>Verify Phone</p>
             </div>
-            <div className={`flex-1 text-center ${step >= 3 ? 'text-primary-600 font-semibold' : 'text-gray-400'}`}>
-              3. Upload ID
+            <div className={`flex-1 text-center text-sm font-medium ${step >= 3 ? 'text-blue-600' : 'text-gray-400'}`}>
+              <div className={`inline-flex items-center justify-center w-8 h-8 rounded-full border-2 mb-2 ${step >= 3 ? 'bg-blue-600 border-blue-600 text-white' : 'border-gray-300'}`}>
+                3
+              </div>
+              <p>Upload ID</p>
             </div>
           </div>
 
           {error && (
-            <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+            <div className="alert alert-error mb-4">
               {error}
             </div>
           )}
@@ -167,7 +176,7 @@ export default function ProviderRegister() {
             <form onSubmit={handleRegister} className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium mb-1">Full Name</label>
+                  <label className="label">Full Name</label>
                   <input
                     type="text"
                     value={formData.full_name}
@@ -178,7 +187,7 @@ export default function ProviderRegister() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium mb-1">Email</label>
+                  <label className="label">Email</label>
                   <input
                     type="email"
                     value={formData.email}
@@ -189,7 +198,7 @@ export default function ProviderRegister() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium mb-1">Phone Number</label>
+                  <label className="label">Phone Number</label>
                   <input
                     type="tel"
                     value={formData.phone_number}
@@ -201,7 +210,7 @@ export default function ProviderRegister() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium mb-1">Service Category</label>
+                  <label className="label">Service Category</label>
                   <select
                     value={formData.category_id}
                     onChange={(e) => setFormData({...formData, category_id: e.target.value})}
@@ -216,7 +225,7 @@ export default function ProviderRegister() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium mb-1">Years of Experience</label>
+                  <label className="label">Years of Experience</label>
                   <input
                     type="number"
                     min="0"
@@ -228,7 +237,7 @@ export default function ProviderRegister() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium mb-1">Address</label>
+                  <label className="label">Address</label>
                   <input
                     type="text"
                     value={formData.address}
@@ -239,7 +248,7 @@ export default function ProviderRegister() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium mb-1">Password</label>
+                  <label className="label">Password</label>
                   <input
                     type="password"
                     value={formData.password}
@@ -251,7 +260,7 @@ export default function ProviderRegister() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium mb-1">Confirm Password</label>
+                  <label className="label">Confirm Password</label>
                   <input
                     type="password"
                     value={formData.confirmPassword}
@@ -271,11 +280,11 @@ export default function ProviderRegister() {
           {step === 2 && (
             <form onSubmit={handleVerifyOtp} className="space-y-4">
               <p className="text-center text-gray-600 mb-4">
-                We've sent a verification code to {formData.phone_number}
+                We've sent a verification code to <span className="font-medium">{formData.phone_number}</span>
               </p>
 
               <div>
-                <label className="block text-sm font-medium mb-1">Enter OTP</label>
+                <label className="label">Enter OTP</label>
                 <input
                   type="text"
                   value={otp}
@@ -301,7 +310,7 @@ export default function ProviderRegister() {
               </p>
 
               <div>
-                <label className="block text-sm font-medium mb-1">Verification Document</label>
+                <label className="label">Verification Document</label>
                 <input
                   type="file"
                   accept="image/*,.pdf"
@@ -309,7 +318,7 @@ export default function ProviderRegister() {
                   className="input-field"
                   required
                 />
-                <p className="text-sm text-gray-500 mt-1">
+                <p className="text-sm text-gray-500 mt-2">
                   Accepted formats: JPG, PNG, PDF (Max 5MB)
                 </p>
               </div>
@@ -327,7 +336,7 @@ export default function ProviderRegister() {
           <div className="mt-6 text-center">
             <p className="text-gray-600">
               Already have an account?{' '}
-              <Link href="/auth/login" className="text-primary-600 hover:underline">
+              <Link href="/auth/login" className="text-blue-600 hover:text-blue-700 font-medium">
                 Login
               </Link>
             </p>

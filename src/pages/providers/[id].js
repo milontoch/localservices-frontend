@@ -91,8 +91,8 @@ export default function ProviderProfile() {
   if (loading) {
     return (
       <Layout>
-        <div className="container mx-auto px-4 py-8 text-center">
-          Loading...
+        <div className="max-w-6xl mx-auto px-4 py-6 text-center">
+          <p className="text-muted">Loading provider information...</p>
         </div>
       </Layout>
     );
@@ -101,8 +101,8 @@ export default function ProviderProfile() {
   if (!provider) {
     return (
       <Layout>
-        <div className="container mx-auto px-4 py-8 text-center">
-          Provider not found
+        <div className="max-w-6xl mx-auto px-4 py-6 text-center">
+          <p className="text-muted">Provider not found</p>
         </div>
       </Layout>
     );
@@ -114,7 +114,7 @@ export default function ProviderProfile() {
         <title>{provider.full_name} - LocalServices</title>
       </Head>
 
-      <div className="container mx-auto px-4 py-8">
+      <div className="max-w-6xl mx-auto px-4 py-6">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Main Content */}
           <div className="lg:col-span-2">

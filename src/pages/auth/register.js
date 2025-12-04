@@ -82,12 +82,12 @@ export default function Register() {
         <title>Register - LocalServices</title>
       </Head>
 
-      <div className="container mx-auto px-4 py-16">
-        <div className="max-w-md mx-auto card">
-          <h1 className="text-3xl font-bold mb-6 text-center">Create Account</h1>
+      <div className="max-w-6xl mx-auto px-4 py-6 flex items-center justify-center min-h-[70vh]">
+        <div className="w-full max-w-md card">
+          <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">Create Account</h1>
 
           {error && (
-            <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+            <div className="alert alert-error mb-4">
               {error}
             </div>
           )}
@@ -95,7 +95,7 @@ export default function Register() {
           {step === 1 ? (
             <form onSubmit={handleRegister} className="space-y-4">
               <div>
-                <label className="block text-sm font-medium mb-1">Full Name</label>
+                <label className="label">Full Name</label>
                 <input
                   type="text"
                   value={formData.full_name}
@@ -106,7 +106,7 @@ export default function Register() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-1">Email</label>
+                <label className="label">Email</label>
                 <input
                   type="email"
                   value={formData.email}
@@ -117,7 +117,7 @@ export default function Register() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-1">Phone Number</label>
+                <label className="label">Phone Number</label>
                 <input
                   type="tel"
                   value={formData.phone_number}
@@ -129,7 +129,7 @@ export default function Register() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-1">Password</label>
+                <label className="label">Password</label>
                 <input
                   type="password"
                   value={formData.password}
@@ -141,7 +141,7 @@ export default function Register() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-1">Confirm Password</label>
+                <label className="label">Confirm Password</label>
                 <input
                   type="password"
                   value={formData.confirmPassword}
@@ -158,11 +158,11 @@ export default function Register() {
           ) : (
             <form onSubmit={handleVerifyOtp} className="space-y-4">
               <p className="text-center text-gray-600 mb-4">
-                We've sent a verification code to {formData.phone_number}
+                We've sent a verification code to <span className="font-medium">{formData.phone_number}</span>
               </p>
 
               <div>
-                <label className="block text-sm font-medium mb-1">Enter OTP</label>
+                <label className="label">Enter OTP</label>
                 <input
                   type="text"
                   value={otp}
@@ -192,7 +192,7 @@ export default function Register() {
           <div className="mt-6 text-center">
             <p className="text-gray-600">
               Already have an account?{' '}
-              <Link href="/auth/login" className="text-primary-600 hover:underline">
+              <Link href="/auth/login" className="text-blue-600 hover:text-blue-700 font-medium">
                 Login
               </Link>
             </p>

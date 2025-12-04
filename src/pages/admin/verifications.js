@@ -70,7 +70,7 @@ export default function AdminVerifications() {
         <title>Provider Verifications - Admin</title>
       </Head>
 
-      <div className="container mx-auto px-4 py-8">
+      <div className="max-w-6xl mx-auto px-4 py-6">
         <h1 className="text-3xl font-bold mb-6">Provider Verifications</h1>
 
         {error && (

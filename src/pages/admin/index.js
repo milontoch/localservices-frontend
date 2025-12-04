@@ -66,22 +66,24 @@ export default function AdminDashboard() {
         <title>Admin Dashboard - LocalServices</title>
       </Head>
 
-      <div className="container mx-auto px-4 py-8">
+      <div className="max-w-6xl mx-auto px-4 py-6">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold mb-2">Admin Dashboard</h1>
-          <p className="text-gray-600">Welcome back, {user.name || user.email}</p>
+          <h1 className="text-3xl font-bold mb-2 text-gray-800">Admin Dashboard</h1>
+          <p className="text-gray-600">Welcome back, <span className="font-medium">{user.name || user.email}</span></p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid-3">
           {menuItems.map((item) => (
             <Link key={item.href} href={item.href}>
-              <div className="card hover:shadow-lg transition-shadow cursor-pointer">
-                <div className={`w-12 h-12 rounded-lg ${item.color} flex items-center justify-center text-2xl mb-4`}>
-                  {item.icon}
+              <a>
+                <div className="card hover:shadow-lg transition-all ease-out duration-200 cursor-pointer">
+                  <div className={`w-12 h-12 rounded-lg ${item.color} flex items-center justify-center text-2xl mb-4`}>
+                    {item.icon}
+                  </div>
+                  <h3 className="text-lg font-semibold mb-2 text-gray-800">{item.title}</h3>
+                  <p className="text-gray-600 text-sm">{item.description}</p>
                 </div>
-                <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                <p className="text-gray-600">{item.description}</p>
-              </div>
+              </a>
             </Link>
           ))}
         </div>

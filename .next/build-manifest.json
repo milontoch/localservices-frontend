@@ -5,8 +5,8 @@
   "devFiles": [],
   "ampDevFiles": [],
   "lowPriorityFiles": [
-    "static/TBteoKR8HLTmKyKjU2tmZ/_buildManifest.js",
-    "static/TBteoKR8HLTmKyKjU2tmZ/_ssgManifest.js"
+    "static/BwypYFInRHcHlSI-9d9yD/_buildManifest.js",
+    "static/BwypYFInRHcHlSI-9d9yD/_ssgManifest.js"
   ],
   "rootMainFiles": [],
   "pages": {
@@ -36,21 +36,21 @@
       "static/chunks/framework-03cd576e71e4cd66.js",
       "static/chunks/main-fdf56fc4602be5bb.js",
       "static/chunks/173-310ac768cbbaafd7.js",
-      "static/chunks/pages/admin-1004450ea4834633.js"
+      "static/chunks/pages/admin-fd3aab9c8ad8a63a.js"
     ],
     "/admin/blog": [
       "static/chunks/webpack-ee7e63bc15b31913.js",
       "static/chunks/framework-03cd576e71e4cd66.js",
       "static/chunks/main-fdf56fc4602be5bb.js",
       "static/chunks/173-310ac768cbbaafd7.js",
-      "static/chunks/pages/admin/blog-ab0798df522b5585.js"
+      "static/chunks/pages/admin/blog-5894a8191374eb40.js"
     ],
     "/admin/providers": [
       "static/chunks/webpack-ee7e63bc15b31913.js",
       "static/chunks/framework-03cd576e71e4cd66.js",
       "static/chunks/main-fdf56fc4602be5bb.js",
       "static/chunks/173-310ac768cbbaafd7.js",
-      "static/chunks/pages/admin/providers-4f9f9ecb228b0980.js"
+      "static/chunks/pages/admin/providers-28df5fe994358047.js"
     ],
     "/admin/reviews": [
       "static/chunks/webpack-ee7e63bc15b31913.js",
@@ -58,21 +58,21 @@
       "static/chunks/main-fdf56fc4602be5bb.js",
       "static/chunks/173-310ac768cbbaafd7.js",
       "static/chunks/804-657bf1907f405286.js",
-      "static/chunks/pages/admin/reviews-b9e59d19614e58fe.js"
+      "static/chunks/pages/admin/reviews-01cfd4a2e7994fdc.js"
     ],
     "/admin/users": [
       "static/chunks/webpack-ee7e63bc15b31913.js",
       "static/chunks/framework-03cd576e71e4cd66.js",
       "static/chunks/main-fdf56fc4602be5bb.js",
       "static/chunks/173-310ac768cbbaafd7.js",
-      "static/chunks/pages/admin/users-8564b4c555ccd089.js"
+      "static/chunks/pages/admin/users-be0559430475f835.js"
     ],
     "/admin/verifications": [
       "static/chunks/webpack-ee7e63bc15b31913.js",
       "static/chunks/framework-03cd576e71e4cd66.js",
       "static/chunks/main-fdf56fc4602be5bb.js",
       "static/chunks/173-310ac768cbbaafd7.js",
-      "static/chunks/pages/admin/verifications-d41dae77dfacf694.js"
+      "static/chunks/pages/admin/verifications-d89375cb24c06ef7.js"
     ],
     "/auth/login": [
       "static/chunks/webpack-ee7e63bc15b31913.js",

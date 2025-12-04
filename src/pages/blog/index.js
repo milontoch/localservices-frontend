@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import Layout from '../components/Layout';
-import { getBlogPosts } from '../services/api';
+import Layout from '../../components/Layout';
+import { getBlogPosts } from '../../services/api';
 
 export default function Blog() {
   const [posts, setPosts] = useState([]);
